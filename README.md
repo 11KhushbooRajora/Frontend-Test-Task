@@ -196,13 +196,14 @@ frontend/
       UserForm.jsx
       UserList.jsx
     App.jsx
+    useFetch.jsx
 
 backend/
+  db/
+  db.connect.js
   models/
-    userModel.js
-  routes/
-    userRoutes.js
-  server.js
+    user.model.js
+  index.js
 ```
 
 ---
