@@ -87,7 +87,7 @@ Remove a user from the database.
 GET /users
 Returns all users
 # Sample Response:
-``[
+`[
   {
     "_id": "123",
     "firstName": "John",
@@ -95,7 +95,7 @@ Returns all users
     "phoneNumber": "9876543210",
     "email": "john@example.com"
   }
-]``
+]`
 
 # POST /users
 Create a new user
