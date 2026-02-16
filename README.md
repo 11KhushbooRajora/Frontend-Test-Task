@@ -96,16 +96,20 @@ Update existing user
 # DELETE /users/:id
 Delete a user
 
-## 🏗 Extensibility Design
- The form is built using a configuration-driven approach.
+## Extensibility Design
+
+The form is built using a configuration-driven approach.
 
 Example (field configuration):
+
+```javascript
 const formFields = [
   { name: "firstName", label: "First Name", type: "text", required: true },
   { name: "lastName", label: "Last Name", type: "text", required: true },
   { name: "phoneNumber", label: "Phone Number", type: "text", required: true },
   { name: "email", label: "Email Address", type: "email", required: true }
 ];
+
 
 # ✅ How to Add a New Field
 
