@@ -102,13 +102,13 @@ The form is built using a configuration-driven approach.
 
 Example (field configuration):
 
-```javascript
+`javascript
 const formFields = [
   { name: "firstName", label: "First Name", type: "text", required: true },
   { name: "lastName", label: "Last Name", type: "text", required: true },
   { name: "phoneNumber", label: "Phone Number", type: "text", required: true },
   { name: "email", label: "Email Address", type: "email", required: true }
-];
+];`
 
 
 # ✅ How to Add a New Field
