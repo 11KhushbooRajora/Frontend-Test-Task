@@ -1,18 +1,50 @@
-# React + Vite
+# User Management CRUD App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack User Management application where you can create, view, update, and delete users.
+Built with a React frontend, Node.js/Express backend, and MongoDB database.
 
-Currently, two official plugins are available:
+The application is designed with extensibility in mind, allowing new form fields to be added with minimal code changes using a configuration-driven form architecture.
+## 🌐 Demo Link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Demo:
+[(Add your deployed link here – Vercel/Netlify)](https://frontend-test-task-gray.vercel.app/)
 
-## React Compiler
+## Quick Start
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+npm install
+npm run dev      # or npm start
 
-Note: This will impact Vite dev & build performances.
+## Technologies
+React JS
 
-## Expanding the ESLint configuration
+React Hooks (useState, useEffect)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Bootstrap (for UI styling)
+
+Node.js
+
+Express.js
+
+MongoDB + Mongoose
+
+## Features
+User Form
+First Name (Required)
+
+Last Name (Required)
+
+Phone Number (Required, validated)
+
+Email Address (Required, validated format)
+
+Form supports:
+
+Required field enforcement
+
+Email pattern validation
+
+Proper error messages
+
+Clean and responsive layout
