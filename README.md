@@ -1,17 +1,27 @@
 # User Management CRUD App
 
-A full-stack User Management application where you can create, view, update, and delete users.
+A full-stack User Management application where you can create, view, update, and delete users.  
 Built with a React frontend, Node.js/Express backend, and MongoDB database.
 
 The application is designed with extensibility in mind, allowing new form fields to be added with minimal code changes using a configuration-driven form architecture.
+
+---
+
 ## 🌐 Demo Link
 
-Live Demo: https://frontend-test-task-gray.vercel.app/
+**Live Demo:**  
+https://frontend-test-task-gray.vercel.app/
+
+---
 
 ## 🚀 Quick Start
-# Clone the repository
+
+### Clone the Repository
+
+```bash
 git clone https://github.com/<your-username>/<your-repo>.git
 cd <your-repo>
+
 
 # 📦 Frontend Setup
 cd frontend
@@ -77,7 +87,7 @@ Remove a user from the database.
 GET /users
 Returns all users
 # Sample Response:
-[
+``[
   {
     "_id": "123",
     "firstName": "John",
@@ -85,7 +95,7 @@ Returns all users
     "phoneNumber": "9876543210",
     "email": "john@example.com"
   }
-]
+]``
 
 # POST /users
 Create a new user
