@@ -1,117 +1,92 @@
 import { useState, useEffect } from "react";
 
-const initialState = {
-  firstName: "",
-  lastName: "",
-  phoneNumber: "",
-  email: "",
+const formFields = [
+  { name: "firstName", label: "First Name", type: "text", required: true },
+  { name: "lastName", label: "Last Name", type: "text", required: true },
+  { name: "phoneNumber", label: "Phone Number", type: "tel", required: true, pattern: "[0-9]{10}" },
+  { name: "email", label: "Email Address", type: "email", required: true }
+];
+
+const generateInitialState = () => {
+  const state = {};
+  formFields.forEach(field => {
+    state[field.name] = "";
+  });
+  return state;
 };
 
 const UserForm = ({ selectedUser, onSuccess, clearSelection }) => {
-  const [userData, setUserData] = useState(initialState);
+  const [userData, setUserData] = useState(generateInitialState());
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (selectedUser) {
       setUserData(selectedUser);
+    } else {
+      setUserData(generateInitialState());
     }
   }, [selectedUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
+    setUserData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const url = selectedUser
-    ? `https://test-task-six-iota.vercel.app/users/${selectedUser._id}`
-    : `https://test-task-six-iota.vercel.app/users`;
+    const url = selectedUser
+      ? `https://test-task-six-iota.vercel.app/users/${selectedUser._id}`
+      : `https://test-task-six-iota.vercel.app/users`;
 
-  // Use the same method as your backend expects
-  const method = "POST"; // or PUT if backend supports
+    const method = selectedUser ? "PUT" : "POST";
 
-  console.log("Submitting URL:", url);
-  console.log("User data:", userData);
+    try {
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
 
-  try {
-    const response = await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    });
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(errText || "Something went wrong");
+      }
 
-    if (!response.ok) {
-      const errText = await response.text();
-      throw new Error(errText || "Something went wrong");
+      await response.json();
+
+      setMessage(selectedUser ? "User updated successfully!" : "User added successfully!");
+      setUserData(generateInitialState());
+      onSuccess();
+      clearSelection();
+
+    } catch (error) {
+      console.error(error);
+      setMessage("Error saving user: " + error.message);
     }
-
-    const data = await response.json();
-    setMessage(selectedUser ? "User updated successfully!" : "User added successfully!");
-    setUserData(initialState);
-    onSuccess();
-    clearSelection();
-  } catch (error) {
-    console.error(error);
-    setMessage("Error saving user: " + error.message);
-  }
-};
-
+  };
 
   return (
     <div className="card p-4 mb-4">
       <h3>{selectedUser ? "Update User" : "Add New User"}</h3>
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            className="form-control"
-            value={userData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            className="form-control"
-            value={userData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>Phone Number</label>
-          <input
-            type="tel"
-            name="phoneNumber"
-            className="form-control"
-            value={userData.phoneNumber}
-            onChange={handleChange}
-            pattern="[0-9]{10}"
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            value={userData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        
+        {/* ✅ Dynamic Rendering of Fields */}
+        {formFields.map(field => (
+          <div className="mb-3" key={field.name}>
+            <label className="form-label">{field.label}</label>
+            <input
+              type={field.type}
+              name={field.name}
+              className="form-control"
+              value={userData[field.name] || ""}
+              onChange={handleChange}
+              required={field.required}
+              pattern={field.pattern || undefined}
+            />
+          </div>
+        ))}
 
         <button type="submit" className="btn btn-primary me-2">
           {selectedUser ? "Update" : "Add User"}
@@ -128,9 +103,10 @@ const UserForm = ({ selectedUser, onSuccess, clearSelection }) => {
         )}
       </form>
 
-      <p className="text-success mt-3">{message}</p>
+      {message && <p className="text-success mt-3">{message}</p>}
     </div>
   );
 };
 
 export default UserForm;
+
