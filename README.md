@@ -1,109 +1,122 @@
-User Management CRUD App
+# User Management CRUD App
 
-A full-stack User Management application where you can create, view, update, and delete users.
+A full-stack User Management application where you can create, view, update, and delete users.  
 Built with a React frontend, Node.js/Express backend, and MongoDB database.
 
 The application is designed with extensibility in mind, allowing new form fields to be added with minimal code changes using a configuration-driven form architecture.
 
-🌐 Demo Link
+---
 
-Live Demo:
+## 🌐 Demo Link
+
+**Live Demo:**  
 https://frontend-test-task-gray.vercel.app/
 
-🚀 Quick Start
-Clone the Repository
-```git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>```
+---
 
-📦 Frontend Setup
+## 🚀 Quick Start
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+```
+
+---
+
+## 📦 Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
-
+```
 
 Frontend runs on:
 
+```
 http://localhost:5173
+```
 
-🔧 Backend Setup
+---
+
+## 🔧 Backend Setup
+
+```bash
 cd backend
 npm install
 npm run dev
-
+```
 
 Backend runs on:
 
+```
 http://localhost:3001
+```
 
+Make sure MongoDB is running locally or update your `.env` file with your MongoDB connection string.
 
-Make sure MongoDB is running locally or update your .env file with your MongoDB connection string.
+---
 
-🛠 Technologies Used
-Frontend
+## 🛠 Technologies Used
 
-React JS
+### Frontend
+- React JS
+- React Hooks (`useState`, `useEffect`)
+- Bootstrap
+- Fetch API
 
-React Hooks (useState, useEffect)
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
 
-Bootstrap
+---
 
-Fetch API
+## ✨ Features
 
-Backend
+### 🧾 User Form
 
-Node.js
-
-Express.js
-
-MongoDB
-
-Mongoose
-
-✨ Features
-🧾 User Form
-Fields
-
-First Name
-
-Last Name
-
-Phone Number
-
-Email Address
+#### Fields
+- First Name
+- Last Name
+- Phone Number
+- Email Address
 
 Each field includes:
+- Required validation
+- Input validation
+- Error messaging
+- Controlled components
 
-Required validation
+---
 
-Input validation
+## 🔄 CRUD Operations
 
-Error messaging
-
-Controlled components
-
-🔄 CRUD Operations
-➕ Create User
-
+### ➕ Create User
 Add a new user using the form.
 
-📋 Read Users
-
+### 📋 Read Users
 Display a list of all users from the API.
 
-✏️ Update User
-
+### ✏️ Update User
 Edit an existing user's information.
 
-❌ Delete User
-
+### ❌ Delete User
 Remove a user from the database.
 
-🔌 API Reference
-GET /users
+---
 
+## 🔌 API Reference
+
+### GET `/users`
 Returns all users.
 
-Sample Response
+#### Sample Response
+
+```json
 [
   {
     "_id": "123",
@@ -113,54 +126,70 @@ Sample Response
     "email": "john@example.com"
   }
 ]
+```
 
-POST /users
+---
 
+### POST `/users`
 Create a new user.
 
-PUT /users/:id
+---
 
+### PUT `/users/:id`
 Update an existing user.
 
-DELETE /users/:id
+---
 
+### DELETE `/users/:id`
 Delete a user.
 
-🏗 Extensibility Design
+---
+
+## 🏗 Extensibility Design
 
 The form is built using a configuration-driven approach.
 
 All form fields are defined in a central configuration array:
 
+```javascript
 const formFields = [
   { name: "firstName", label: "First Name", type: "text", required: true },
   { name: "lastName", label: "Last Name", type: "text", required: true },
   { name: "phoneNumber", label: "Phone Number", type: "text", required: true },
   { name: "email", label: "Email Address", type: "email", required: true }
 ];
-
+```
 
 This structure allows dynamic rendering of form inputs and makes the application scalable.
 
-✅ How to Add a New Field
+---
 
-To add a new field like Date of Birth:
+## ✅ How to Add a New Field
 
-1️⃣ Add it to the formFields array
+To add a new field like **Date of Birth**:
+
+### 1️⃣ Add it to the `formFields` array
+
+```javascript
 {
   name: "dateOfBirth",
   label: "Date of Birth",
   type: "date",
   required: false
 }
+```
 
-2️⃣ Add it to the backend Mongoose schema
+### 2️⃣ Add it to the backend Mongoose schema
 
 No major UI rewrite is required.
 
 This makes the application scalable, maintainable, and easy to extend.
 
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```
 frontend/
   src/
     components/
@@ -174,9 +203,13 @@ backend/
   routes/
     userRoutes.js
   server.js
+```
 
-📬 Contact
+---
+
+## 📬 Contact
 
 For any questions regarding this submission:
 
-Email: rajorakhushboo443@gmail.com
+**Email:** rajorakhushboo443@gmail.com
+
