@@ -107,12 +107,12 @@ const formFields = [
   { name: "email", label: "Email Address", type: "email", required: true }
 ];
 
-## ✅ How to Add a New Field
+# ✅ How to Add a New Field
 
 To add a new field like Date of Birth:
-# 1. Add it to the formFields array:
+ 1. Add it to the formFields array:
 { name: "dateOfBirth", label: "Date of Birth", type: "date", required: false }
-# 2. Add it to the backend Mongoose schema.
+ 2. Add it to the backend Mongoose schema.
 No major UI rewrite is required.
 
 This makes the application scalable and maintainable.
