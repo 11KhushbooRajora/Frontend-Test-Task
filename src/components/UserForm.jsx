@@ -39,7 +39,7 @@ const UserForm = ({ selectedUser, onSuccess, clearSelection }) => {
       ? `https://test-task-six-iota.vercel.app/users/${selectedUser._id}`
       : `https://test-task-six-iota.vercel.app/users`;
 
-    const method = selectedUser ? "PUT" : "POST";
+    const method = "POST";
 
     try {
       const response = await fetch(url, {
